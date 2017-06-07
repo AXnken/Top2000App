@@ -7,8 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Height="220" Width="498"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="185*"/>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="247*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dataGridTop2000" HorizontalAlignment="Left" Margin="0,65,0,0" VerticalAlignment="Top" Height="254" Width="517" Grid.ColumnSpan="3"/>
+        <Button x:Name="btnAutoImport" Content="Top2000 import automatic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150"/>
+        <Button x:Name="btnEditArt" Content="Edit Artist" HorizontalAlignment="Left" Margin="55,0,0,0" VerticalAlignment="Top" Width="75" Click="btnEditArt_Click" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="ComboYear" HorizontalAlignment="Left" Margin="127,0,0,0" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
+        <Button x:Name="btnManualImport" Content="Manual Import" HorizontalAlignment="Left" Margin="150,0,0,0" VerticalAlignment="Top" Width="90" Grid.ColumnSpan="2" Click="btnManualImport_Click_1"/>
 
     </Grid>
 </Window>

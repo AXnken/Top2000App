@@ -24,5 +24,20 @@ namespace Top2000App
         {
             InitializeComponent();
         }
+        
+
+        private void btnEditArt_Click(object sender, RoutedEventArgs e)
+        {
+            Artist art = new Artist();
+            art.Show();
+        }
+
+        
+
+        private void btnManualImport_Click_1(object sender, RoutedEventArgs e)
+        {
+            ManualImport MaIm = new ManualImport();
+            MaIm.Show();
+        }
     }
 }
