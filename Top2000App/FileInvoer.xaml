@@ -1,0 +1,15 @@
+﻿<Window x:Class="Top2000App.FileInvoer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Top2000App"
+        mc:Ignorable="d"
+        Title="FileInvoer" Height="122.015" Width="300">
+    <Grid>
+        <Button x:Name="button" Content="Bestand" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="96" Click="button_Click"/>
+        <Label x:Name="labelFileName" Content="Geen bestand Selecteert" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="140"/>
+        <ComboBox x:Name="comboBoxYearInvoer" HorizontalAlignment="Left" Margin="153,10,0,0" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,5 +100,11 @@ namespace Top2000App
             }
         }
         #endregion
+
+        private void btnAutoImport_Click(object sender, RoutedEventArgs e)
+        {
+            FileInvoer fl = new FileInvoer();
+            fl.ShowDialog();
+        }
     }
 }

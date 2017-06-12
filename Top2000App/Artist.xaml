@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Top2000App"
         mc:Ignorable="d"
-        Title="Artist" Height="367" Width="464">
+        Title="Artist" Height="372.478" Width="473.586">
     <Grid>
-        <DataGrid x:Name="dataGridArt" HorizontalAlignment="Left" Margin="1,105,-1,0" VerticalAlignment="Top" Height="231" Width="456"/>
+        <DataGrid x:Name="dataGridArt" HorizontalAlignment="Left" Margin="1,105,-1,0" VerticalAlignment="Top" Height="231" Width="456" IsReadOnly="True"/>
         <Button x:Name="btnUpdateArt" Content="Update Artist" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80"/>
         <Button x:Name="btnNewArt" Content="New Artist" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="btnDelArt" Content="Delete Artist" HorizontalAlignment="Left" Margin="155,0,0,0" VerticalAlignment="Top" Width="75"/>
