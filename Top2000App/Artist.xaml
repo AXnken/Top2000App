@@ -9,12 +9,10 @@
     <Grid>
         <DataGrid x:Name="dataGridArt" HorizontalAlignment="Left" Margin="1,105,-1,0" VerticalAlignment="Top" Height="231" Width="456" IsReadOnly="True"/>
         <Button x:Name="btnUpdateArt" Content="Update Artist" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80"/>
-        <Button x:Name="btnNewArt" Content="New Artist" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnDelArt" Content="Delete Artist" HorizontalAlignment="Left" Margin="155,0,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="1,34,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtBio" HorizontalAlignment="Left" Height="23" Margin="126,34,0,0" TextWrapping="Wrap" Text="Biographie" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtWikiUrl" HorizontalAlignment="Left" Height="23" Margin="336,34,0,0" TextWrapping="Wrap" Text="Wiki Url" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnImportFoto" Content="Import Foto" HorizontalAlignment="Left" Margin="251,34,0,0" VerticalAlignment="Top" Width="80" Height="23"/>
-        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="0,62,0,0" VerticalAlignment="Top" Width="80" Height="23"/>
+        <Button x:Name="btnNewArt" Content="New Artist" HorizontalAlignment="Left" Margin="392,0,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnDelArt" Content="Delete Artist" HorizontalAlignment="Left" Margin="85,0,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="10,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213"/>
+        <Button x:Name="btnZoeken" Content="Zoeken" HorizontalAlignment="Left" Margin="256,55,0,0" VerticalAlignment="Top" Width="80" Height="23" Click="btnZoeken_Click"/>
+        <Label x:Name="label" Content="Naam:" HorizontalAlignment="Left" Margin="0,29,0,0" VerticalAlignment="Top" Width="150"/>
     </Grid>
 </Window>

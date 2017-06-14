@@ -24,12 +24,12 @@ namespace Top2000App
         public Artist()
         {
             InitializeComponent();
+            HaalAlleArtiesten();
         }
 
-        #region Dataconnectie methode
+        #region Dataconnectie methodes
 
-        //methode maken voor automatische connectie
-        public void DataConnection(string year)
+        public void HaalAlleArtiesten()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(@"Server = (localdb)\mssqllocaldb;");
@@ -45,7 +45,47 @@ namespace Top2000App
             try
             {
                 conn.Open();
-                string st = string.Format("select * from Lijst where top2000jaar = {0}", year);
+                string st = string.Format("select naam from Artiest {0}","");
+                cmd = new SqlCommand(st, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable table = new DataTable();
+                table.Load(reader);
+                dataGridArt.ItemsSource = table.DefaultView;
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public void ZoekArtiest(string artiest)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(@"Server = (localdb)\mssqllocaldb;");
+            sb.Append("Database = TOP2000;");
+            sb.Append("User Id = i5ao1;");
+            sb.Append("Password = test;");
+            string sr = "";
+            string cs = sb.ToString();
+            SqlConnection conn = new SqlConnection(sr);
+            SqlCommand cmd;
+            conn.ConnectionString = cs;
+
+            try
+            {
+                conn.Open();
+                string st = string.Format("select * from Artiest where naam like {0}", "'" + "%" + artiest +"%" + "'");
                 cmd = new SqlCommand(st, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable table = new DataTable();
@@ -69,6 +109,11 @@ namespace Top2000App
             }
         }
         #endregion
+
+        private void btnZoeken_Click(object sender, RoutedEventArgs e)
+        {
+            ZoekArtiest(txtName.Text.ToLower());
+        }
     }
 
 
