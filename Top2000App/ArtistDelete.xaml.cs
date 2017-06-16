@@ -17,19 +17,19 @@ using System.Windows.Shapes;
 namespace Top2000App
 {
     /// <summary>
-    /// Interaction logic for Artist.xaml
+    /// Interaction logic for ArtistDelete.xaml
     /// </summary>
-    public partial class Artist : Window
+    public partial class ArtistDelete : Window
     {
-        public Artist()
+        public ArtistDelete(string artiestid, string artiestnaam)
         {
             InitializeComponent();
-            HaalAlleArtiesten();
+            textBoxArtiestID.Text = artiestid;
+            textBoxArtiestnaam.Text = artiestnaam;
         }
 
-        #region Dataconnectie methodes
-
-        public void HaalAlleArtiesten()
+        #region dataconectie methods
+        public void VerwijderArtiest(string artiestNaam)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(@"Server = (localdb)\mssqllocaldb;");
@@ -45,12 +45,9 @@ namespace Top2000App
             try
             {
                 conn.Open();
-                string st = string.Format("select * from Artiest {0}","");
+                string st = string.Format("exec dbo.VerwijderArtiest @artiestNaam =" + artiestNaam);
                 cmd = new SqlCommand(st, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
-                DataTable table = new DataTable();
-                table.Load(reader);
-                dataGridArt.ItemsSource = table.DefaultView;
             }
             catch (SqlException sqlEx)
             {
@@ -69,7 +66,7 @@ namespace Top2000App
             }
         }
 
-        public void ZoekArtiest(string artiest)
+        public bool CheckArtiest(string artiestNaam)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(@"Server = (localdb)\mssqllocaldb;");
@@ -85,20 +82,27 @@ namespace Top2000App
             try
             {
                 conn.Open();
-                string st = string.Format("select * from Artiest where naam like {0}", "'" + "%" + artiest +"%" + "'");
+                string st = string.Format("Select count(naam) from Artiest");
                 cmd = new SqlCommand(st, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
-                DataTable table = new DataTable();
-                table.Load(reader);
-                dataGridArt.ItemsSource = table.DefaultView;
+                if (reader.HasRows)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
             catch (SqlException sqlEx)
             {
                 MessageBox.Show(sqlEx.Message);
+                return false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
             finally
             {
@@ -110,32 +114,25 @@ namespace Top2000App
         }
         #endregion
 
-        private void btnZoeken_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
-            ZoekArtiest(txtName.Text.ToLower());
-        }
 
-        private void btnDelArt_Click(object sender, RoutedEventArgs e)
-        {
-            
-            if (dataGridArt.SelectedItems.Count > 1)
+            if(MessageBox.Show("Weet u zeker dat u deze artiest wilt verwijderen", "Waarschuwing",MessageBoxButton.OKCancel) == MessageBoxResult.OK)
             {
-                MessageBox.Show("Let op: U heeft meer dan een artiest geselecteerd u mag er maar een selecteren", "Waarschuwing", MessageBoxButton.OK);
-                return;
+                VerwijderArtiest(textBoxArtiestnaam.Text);
+                if (CheckArtiest(textBoxArtiestnaam.Text))
+                {
+                    MessageBox.Show("De artiest is succesvol verwijdert", "Verandering", MessageBoxButton.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Let op: er is iets miss gegaan en de artiest is niet verwijdert. Vergeet niet dat je alleen artiesten kan verwijderen zonder liedjes","Error",MessageBoxButton.OK);
+                }
             }
-            else if (dataGridArt.SelectedItems.Count == 0)
+            else
             {
-                MessageBox.Show("Let op: U heeft geen artiest geselecteerd u moet er een selecteren", "Waarschuwing", MessageBoxButton.OK);
+                this.Close();
             }
-            else if (dataGridArt.SelectedItems.Count == 1)
-            {
-                DataRowView datarow = (DataRowView)dataGridArt.SelectedItem;
-                ArtistDelete ad = new ArtistDelete(Convert.ToString(datarow.Row.ItemArray[0]),Convert.ToString(datarow.Row.ItemArray[1]));
-                ad.ShowDialog();
-            }
-            
         }
     }
-
-
 }
