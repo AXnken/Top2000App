@@ -136,6 +136,12 @@ namespace Top2000App
             }
             
         }
+
+        private void btnNewArt_Click(object sender, RoutedEventArgs e)
+        {
+            ArtistNew an = new ArtistNew();
+            an.ShowDialog();
+        }
     }
 
 
