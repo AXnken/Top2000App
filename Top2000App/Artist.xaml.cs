@@ -132,6 +132,7 @@ namespace Top2000App
                 DataRowView datarow = (DataRowView)dataGridArt.SelectedItem;
                 ArtistDelete ad = new ArtistDelete(Convert.ToString(datarow.Row.ItemArray[0]),Convert.ToString(datarow.Row.ItemArray[1]));
                 ad.ShowDialog();
+                ZoekArtiest(txtName.Text);
             }
             
         }

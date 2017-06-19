@@ -76,7 +76,7 @@ namespace Top2000App
             try
             {
                 conn.Open();
-                string st = string.Format("select * from Lijst where top2000jaar = {0}", year);
+                string st = string.Format("select l.Positie,s.Titel from Lijst l inner join Song s on s.songid = l.songid where top2000jaar = {0}", year);
                 cmd = new SqlCommand(st, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable table = new DataTable();

@@ -45,8 +45,9 @@ namespace Top2000App
             try
             {
                 conn.Open();
-                string st = string.Format("exec dbo.VerwijderArtiest @artiestNaam =" + artiestNaam);
+                string st = string.Format("exec dbo.VerwijderArtiest @artiestNaam =" +"'"+  artiestNaam + "'");
                 cmd = new SqlCommand(st, conn);
+                
                 SqlDataReader reader = cmd.ExecuteReader();
             }
             catch (SqlException sqlEx)
@@ -82,17 +83,10 @@ namespace Top2000App
             try
             {
                 conn.Open();
-                string st = string.Format("Select count(naam) from Artiest");
+                string st = string.Format("Select naam from Artiest");
                 cmd = new SqlCommand(st, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return reader.HasRows;
             }
             catch (SqlException sqlEx)
             {
@@ -123,10 +117,12 @@ namespace Top2000App
                 if (CheckArtiest(textBoxArtiestnaam.Text))
                 {
                     MessageBox.Show("De artiest is succesvol verwijdert", "Verandering", MessageBoxButton.OK);
+                    this.Close();
                 }
                 else
                 {
                     MessageBox.Show("Let op: er is iets miss gegaan en de artiest is niet verwijdert. Vergeet niet dat je alleen artiesten kan verwijderen zonder liedjes","Error",MessageBoxButton.OK);
+                    this.Close();
                 }
             }
             else
