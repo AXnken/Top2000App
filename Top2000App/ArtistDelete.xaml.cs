@@ -83,7 +83,7 @@ namespace Top2000App
             try
             {
                 conn.Open();
-                string st = string.Format("Select naam from Artiest");
+                string st = string.Format("Select naam from Artiest where naam = '" + artiestNaam +"'");
                 cmd = new SqlCommand(st, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 return reader.HasRows;
@@ -114,14 +114,15 @@ namespace Top2000App
             if(MessageBox.Show("Weet u zeker dat u deze artiest wilt verwijderen", "Waarschuwing",MessageBoxButton.OKCancel) == MessageBoxResult.OK)
             {
                 VerwijderArtiest(textBoxArtiestnaam.Text);
-                if (!CheckArtiest(textBoxArtiestnaam.Text))
+                if (CheckArtiest(textBoxArtiestnaam.Text))
                 {
-                    MessageBox.Show("De artiest is succesvol verwijdert", "Verandering", MessageBoxButton.OK);
+                    MessageBox.Show("Let op: er is iets miss gegaan en de artiest is niet verwijdert. Vergeet niet dat je alleen artiesten kan verwijderen zonder liedjes", "Error", MessageBoxButton.OK);
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Let op: er is iets miss gegaan en de artiest is niet verwijdert. Vergeet niet dat je alleen artiesten kan verwijderen zonder liedjes","Error",MessageBoxButton.OK);
+                    
+                    MessageBox.Show("De artiest is succesvol verwijdert", "Verandering", MessageBoxButton.OK);
                     this.Close();
                 }
             }

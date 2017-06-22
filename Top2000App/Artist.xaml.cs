@@ -110,11 +110,6 @@ namespace Top2000App
         }
         #endregion
 
-        private void btnZoeken_Click(object sender, RoutedEventArgs e)
-        {
-            ZoekArtiest(txtName.Text.ToLower());
-        }
-
         private void btnDelArt_Click(object sender, RoutedEventArgs e)
         {
             
@@ -141,6 +136,11 @@ namespace Top2000App
         {
             ArtistNew an = new ArtistNew();
             an.ShowDialog();
+        }
+
+        private void txtName_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            ZoekArtiest(txtName.Text.ToLower());
         }
     }
 
