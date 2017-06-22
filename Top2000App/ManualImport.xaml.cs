@@ -57,7 +57,7 @@ namespace Top2000App
             try
             {
                 conn.Open();
-                string st = string.Format("BEGIN TRANSACTION DECLARE @POS int; DECLARE @SONGtitel nvarchar(100); DECLARE @ARTISTname nvarchar(100); DECLARE @SONGyear int; DECLARE @SONGtime datetime; SET @POS = { 0 }; SET @SONGtitel = { 1 }; SET @ARTISTname = { 2 }; SET @SONGyear = { 3 }; SET @SONGtime = { 4 }; INSERT INTO Lijst(positie) VALUES(@POS); INSERT INTO Song(titel, jaar, tijd) VALUES(@SONGtitel, @SONGyear, @SONGtime); INSERT INTO Artiest(naam) VALUES(@ARTISTname); COMMIT", position, songTitel, artistName, songYear, dateTime);
+                string st = string.Format("USE [TOP2000] GO EXEC[dbo].[importManual] @naam = N'{0}', @titel = N'{1}', @jaar = {2}, @tijd = N'{3}',	@top2000jaar = {4}, @positie = {5} GO", artistName, songTitel, dateTime , songYear, position);
                 cmd = new SqlCommand(st, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable table = new DataTable();

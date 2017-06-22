@@ -8,11 +8,12 @@
         Title="ManualImport" Height="172" Width="564">
     <Grid>
         <Label x:Name="lbllabel" Content="ID/Number of Imports:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130"/>
-        <TextBox x:Name="txtTime" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Width="120" Margin="435,62,0,0"/>
-        <TextBox x:Name="txtYear" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Year" VerticalAlignment="Top" Width="120" Margin="315,62,0,0"/>
-        <TextBox x:Name="txtArtistN" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Artist name" VerticalAlignment="Top" Width="120" Margin="195,62,0,0"/>
-        <TextBox x:Name="txtTitel" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Titel" VerticalAlignment="Top" Width="120" Margin="75,62,0,0" RenderTransformOrigin="0,0.348"/>
         <TextBox x:Name="txtPos" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Position" VerticalAlignment="Top" Width="75" Margin="0,62,0,0"/>
+        <TextBox x:Name="txtTitel" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Titel" VerticalAlignment="Top" Width="120" Margin="75,62,0,0" RenderTransformOrigin="0,0.348"/>
+        <TextBox x:Name="txtArtistN" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Artist name" VerticalAlignment="Top" Width="120" Margin="195,62,0,0"/>
+        <TextBox x:Name="txtYear" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Year" VerticalAlignment="Top" Width="120" Margin="315,62,0,0"/>
+        <TextBox x:Name="txtTime" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Width="120" Margin="435,62,0,0"/>
+                
         <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,105,0,0" Click="btnSubmit_Click"/>
         <Label x:Name="lblId_Number" Content="ID/Number" HorizontalAlignment="Left" Margin="135,0,0,0" VerticalAlignment="Top"/>
 
