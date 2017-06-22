@@ -23,13 +23,15 @@ namespace Top2000App
     /// </summary>
     public partial class ArtistNew : Window
     {
+        public byte[] file;
         public ArtistNew()
         {
             InitializeComponent();
+            
         }
 
         #region Dataconnectie methodes
-        public void NewArtiestToevoegen(string naam, object binfoto)
+        public void NewArtiestToevoegen(string naam, string bio,object binfoto,string url)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(@"Server = (localdb)\mssqllocaldb;");
@@ -45,9 +47,9 @@ namespace Top2000App
             try
             {
                 conn.Open();
-                string st = string.Format("insert into Artiest(naam, foto) Values('"+naam+"', @photoFile)");
+                string st = string.Format("exec ToevoegenArtiest @naam = '"+ naam +"', @bio ='"+ bio +"' , @foto = @photofile, @url = '"+url+"'");
                 cmd = new SqlCommand(st, conn);
-                cmd.Parameters.AddWithValue("photoFile", binfoto);
+                cmd.Parameters.AddWithValue("photoFile", binfoto == null ? System.Data.SqlTypes.SqlBinary.Null : binfoto);
                 SqlDataReader reader = cmd.ExecuteReader();
             }
             catch (SqlException sqlEx)
@@ -70,16 +72,28 @@ namespace Top2000App
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            byte[] file;
+            
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.ShowDialog();
+            string filename = ofd.SafeFileName;
+            labelFoto.Content = filename;
             Stream stream = ofd.OpenFile();
             using (var Reader = new BinaryReader(stream))
             {
                 file = Reader.ReadBytes((int)stream.Length);
             }
-                NewArtiestToevoegen(textBoxNewNaam.Text, file);
+                
         }
-        
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            NewArtiestToevoegen(textBoxNewNaam.Text,textBoxNewBio.Text, file,textBoxURL.Text);
+            this.Close();
+        }
     }
 }

@@ -114,7 +114,7 @@ namespace Top2000App
             if(MessageBox.Show("Weet u zeker dat u deze artiest wilt verwijderen", "Waarschuwing",MessageBoxButton.OKCancel) == MessageBoxResult.OK)
             {
                 VerwijderArtiest(textBoxArtiestnaam.Text);
-                if (CheckArtiest(textBoxArtiestnaam.Text))
+                if (!CheckArtiest(textBoxArtiestnaam.Text))
                 {
                     MessageBox.Show("De artiest is succesvol verwijdert", "Verandering", MessageBoxButton.OK);
                     this.Close();
