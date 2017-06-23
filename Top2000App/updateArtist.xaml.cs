@@ -20,12 +20,24 @@ namespace Top2000App
     /// <summary>
     /// Interaction logic for updateArtist.xaml
     /// </summary>
+    /// <seealso cref="System.Windows.Window" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class updateArtist : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="updateArtist"/> class.
+        /// </summary>
+        /// <param name="artiestid">The artiestid.</param>
+        /// <param name="artiestnaam">The artiestnaam.</param>
+        /// <param name="biographie">The biographie.</param>
+        /// <param name="foto">The foto.</param>
+        /// <param name="url">The URL.</param>
         public updateArtist(string artiestid, string artiestnaam,string biographie,byte[] foto,string url)
         {
             InitializeComponent();
-
+            //als de foto null is zorgt hij dat hij deze code skipt
+            if (foto != null)
+            { 
             BitmapImage biImg = new BitmapImage();
             MemoryStream ms = new MemoryStream(foto);
             biImg.BeginInit();
@@ -34,7 +46,7 @@ namespace Top2000App
             ImageSource imgSrc = biImg as ImageSource;
 
             image.Source = imgSrc;
-
+            }
             textBoxid.Text = artiestid;
             textBoxUpdateNaam.Text = artiestnaam;
             textBoxUpdateBio.Text = biographie;
@@ -42,6 +54,13 @@ namespace Top2000App
         }
 
         #region dataconnectie methods
+        /// <summary>
+        /// Alters the artiest.
+        /// </summary>
+        /// <param name="artiestid">The artiestid.</param>
+        /// <param name="artiestnaam">The artiestnaam.</param>
+        /// <param name="biographie">The biographie.</param>
+        /// <param name="url">The URL.</param>
         public void alterArtiest(string artiestid, string artiestnaam, string biographie, string url)
         {
             //stringbuilder wordt gebruikt om de connectionstring op te bouwen
@@ -89,11 +108,21 @@ namespace Top2000App
             }
         }
         #endregion
+        /// <summary>
+        /// Handles the Click event of the buttonCancel control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Handles the Click event of the buttonOpslaan control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void buttonOpslaan_Click(object sender, RoutedEventArgs e)
         {
             alterArtiest(textBoxid.Text,textBoxUpdateNaam.Text,textBoxUpdateBio.Text,textBoxUpdateURL.Text);

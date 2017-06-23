@@ -213,7 +213,7 @@ namespace Top2000App
             {
                 DataRowView datarow = (DataRowView)dataGridArt.SelectedItem;
                 //nieuw instantie aangemaakt van updateArtist
-                updateArtist ua = new updateArtist(Convert.ToString(datarow.Row.ItemArray[0]), Convert.ToString(datarow.Row.ItemArray[1]), Convert.ToString(datarow.Row.ItemArray[2]),(byte[])datarow.Row.ItemArray[3],  Convert.ToString(datarow.Row.ItemArray[4]));
+                updateArtist ua = new updateArtist(Convert.ToString(datarow.Row.ItemArray[0]), Convert.ToString(datarow.Row.ItemArray[1]), Convert.ToString(datarow.Row.ItemArray[2]),datarow.Row.ItemArray[3] == DBNull.Value ? null : (byte[])datarow.Row.ItemArray[3],  Convert.ToString(datarow.Row.ItemArray[4]));
                 //de window updateArtist wordt geopend
                 ua.ShowDialog();
                 ZoekArtiest(txtName.Text);
