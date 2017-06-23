@@ -175,7 +175,7 @@ namespace Top2000App
         {
             //nieuw instantie aangemaakt van ArtistNew
             ArtistNew an = new ArtistNew();
-            //de window wordt geopend
+            //de window Artistnew wordt geopend
             an.ShowDialog();
         }
 
@@ -188,6 +188,36 @@ namespace Top2000App
         {
             //voert de methode zoekArtiest uit met de inhoud van txtName omgezet naar lowercase
             ZoekArtiest(txtName.Text.ToLower());
+        }
+
+        /// <summary>
+        /// Handles the Click event of the btnUpdateArt control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void btnUpdateArt_Click(object sender, RoutedEventArgs e)
+        {
+            //checkt of de gebruiker meer dan 1 geselecteerd heeft en laat een foutmelding zien
+            if (dataGridArt.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Let op: U heeft meer dan een artiest geselecteerd u mag er maar een selecteren", "Waarschuwing", MessageBoxButton.OK);
+                return;
+            }
+            //checkt of de gebruiker wel wat geselecteerd heeft en laat een foutmelding zien
+            else if (dataGridArt.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Let op: U heeft geen artiest geselecteerd u moet er een selecteren", "Waarschuwing", MessageBoxButton.OK);
+            }
+            //wanneer de gebruiker precies 1 heeft geselecteerd
+            else if (dataGridArt.SelectedItems.Count == 1)
+            {
+                DataRowView datarow = (DataRowView)dataGridArt.SelectedItem;
+                //nieuw instantie aangemaakt van updateArtist
+                updateArtist ua = new updateArtist(Convert.ToString(datarow.Row.ItemArray[0]), Convert.ToString(datarow.Row.ItemArray[1]), Convert.ToString(datarow.Row.ItemArray[2]),(byte[])datarow.Row.ItemArray[3],  Convert.ToString(datarow.Row.ItemArray[4]));
+                //de window updateArtist wordt geopend
+                ua.ShowDialog();
+                ZoekArtiest(txtName.Text);
+            }
         }
     }
 
