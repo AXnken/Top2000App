@@ -28,23 +28,58 @@ namespace Top2000App
         {
             InitializeComponent();
 
-            for (int i = 1999; i <= 2015; i++)
-            {
-                ComboYear.Items.Add(string.Format("{0}", i));
-            }
-            ComboYear.SelectedIndex =  ComboYear.Items.Count -1;
+            #region Get latest year
+            StringBuilder sb = new StringBuilder();
+            sb.Append(@"Server = (localdb)\mssqllocaldb;");
+            sb.Append("Database = TOP2000;");
+            sb.Append("User Id = i5ao1;");
+            sb.Append("Password = test;");
+            string sr = "";
+            string cs = sb.ToString();
+            SqlConnection conn = new SqlConnection(sr);
+            SqlCommand cmd;
+            conn.ConnectionString = cs;
 
+            try
+            {
+                conn.Open();
+                string st = string.Format("select max(top2000jaar) from Lijst");
+                cmd = new SqlCommand(st, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable table = new DataTable();
+                table.Load(reader);
+                dataGridTop2000.ItemsSource = table.DefaultView;
+                string item = table.Rows[0].ItemArray[0].ToString();
+                for (int i = 1999; i <= Convert.ToInt32(item); i++)
+                {
+                    ComboYear.Items.Add(string.Format("{0}", i));
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }                       
+            ComboYear.SelectedIndex =  ComboYear.Items.Count -1;
             DataConnection(ComboYear.SelectedItem.ToString());
         }
-        
+        #endregion
 
         private void btnEditArt_Click(object sender, RoutedEventArgs e)
         {
             Artist art = new Artist();
             art.Show();
-        }
-
-        
+        }        
 
         private void btnManualImport_Click_1(object sender, RoutedEventArgs e)
         {
@@ -55,11 +90,10 @@ namespace Top2000App
         private void ComboYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataConnection(ComboYear.SelectedItem.ToString());
+
         }
 
-        #region Dataconnectie methode
-        
-        //methode maken voor automatische connectie
+        #region Manual import into database
         public void DataConnection(string year)
         {
             StringBuilder sb = new StringBuilder();
@@ -82,6 +116,9 @@ namespace Top2000App
                 DataTable table = new DataTable();
                 table.Load(reader);
                 dataGridTop2000.ItemsSource = table.DefaultView;
+                string item = (table.Rows.Count - 1).ToString();
+
+
             }
             catch (SqlException sqlEx)
             {
