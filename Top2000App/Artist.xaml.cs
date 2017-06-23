@@ -129,7 +129,6 @@ namespace Top2000App
                 ad.ShowDialog();
                 ZoekArtiest(txtName.Text);
             }
-            
         }
 
         private void btnNewArt_Click(object sender, RoutedEventArgs e)
