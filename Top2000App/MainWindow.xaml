@@ -15,7 +15,7 @@
         <DataGrid x:Name="dataGridTop2000" HorizontalAlignment="Left" Margin="1,57,0,0" VerticalAlignment="Top" Height="254" Width="517" Grid.ColumnSpan="3" />
         <Button x:Name="btnAutoImport" Content="Top2000 import automatic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Click="btnAutoImport_Click"/>
         <Button x:Name="btnEditArt" Content="Artiesten" HorizontalAlignment="Left" Margin="55,0,0,0" VerticalAlignment="Top" Width="75" Click="btnEditArt_Click" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name="ComboYear" HorizontalAlignment="Left" Margin="127,0,0,297" VerticalAlignment="Bottom" Width="120" Grid.Column="2" SelectionChanged="ComboYear_SelectionChanged"/>
+        <ComboBox x:Name="ComboYear" HorizontalAlignment="Left" Margin="126.269,1,0,0" VerticalAlignment="Top" Width="120" Grid.Column="2" SelectionChanged="ComboYear_SelectionChanged"/>
         <Button x:Name="btnManualImport" Content="Manual Import" HorizontalAlignment="Left" Margin="150,0,0,0" VerticalAlignment="Top" Width="90" Grid.ColumnSpan="2" Click="btnManualImport_Click_1"/>
 
     </Grid>
