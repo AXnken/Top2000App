@@ -5,17 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Top2000App"
         mc:Ignorable="d"
-        Title="ManualImport" Height="172" Width="564">
+        Title="ManualImport" Height="197" Width="684">
     <Grid>
-        <Label x:Name="lbllabel" Content="ID/Number of Imports:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130"/>
-        <TextBox x:Name="txtPos" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Position" VerticalAlignment="Top" Width="75" Margin="0,62,0,0"/>
-        <TextBox x:Name="txtTitel" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Titel" VerticalAlignment="Top" Width="120" Margin="75,62,0,0" RenderTransformOrigin="0,0.348"/>
-        <TextBox x:Name="txtArtistN" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Artist name" VerticalAlignment="Top" Width="120" Margin="195,62,0,0"/>
-        <TextBox x:Name="txtYear" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Year" VerticalAlignment="Top" Width="120" Margin="315,62,0,0"/>
-        <TextBox x:Name="txtTime" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Width="120" Margin="435,62,0,0"/>
-                
+        <TextBox x:Name="txtPos" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Position" VerticalAlignment="Top" Width="75" Margin="0,62,0,0" GotKeyboardFocus="txtPos_GotKeyboardFocus" IsKeyboardFocusedChanged="txtPos_IsKeyboardFocusedChanged"/>
+        <TextBox x:Name="txtTitel" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Titel" VerticalAlignment="Top" Width="120" Margin="75,62,0,0" RenderTransformOrigin="0,0.348" GotKeyboardFocus="txtTitel_GotKeyboardFocus" IsKeyboardFocusedChanged="txtTitel_IsKeyboardFocusedChanged"/>
+        <TextBox x:Name="txtArtistN" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Artist name" VerticalAlignment="Top" Width="120" Margin="195,62,0,0" GotKeyboardFocus="txtArtistN_GotKeyboardFocus" IsKeyboardFocusedChanged="txtArtistN_IsKeyboardFocusedChanged"/>
+        <TextBox x:Name="txtYear" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Year of song" VerticalAlignment="Top" Width="120" Margin="315,62,0,0" GotKeyboardFocus="txtYear_GotKeyboardFocus" IsKeyboardFocusedChanged="txtYear_IsKeyboardFocusedChanged"/>
+        <TextBox x:Name="txtposYear" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="435,62,0,0" GotKeyboardFocus="txtposYear_GotKeyboardFocus" Text="Year of input " IsKeyboardFocusedChanged="txtposYear_IsKeyboardFocusedChanged"/>
+        <TextBox x:Name="txtTime" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Time " VerticalAlignment="Top" Width="120" Margin="555,62,0,0" GotKeyboardFocus="txtTime_GotKeyboardFocus" IsKeyboardFocusedChanged="txtTime_IsKeyboardFocusedChanged"/>
+
         <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,105,0,0" Click="btnSubmit_Click"/>
-        <Label x:Name="lblId_Number" Content="ID/Number" HorizontalAlignment="Left" Margin="135,0,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Input example: UU:MM" HorizontalAlignment="Left" Margin="555,36,0,0" VerticalAlignment="Top" Width="121"/>
+        <Label x:Name="label1" Content="Import manualy" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24"/>
+
+
 
     </Grid>
 </Window>

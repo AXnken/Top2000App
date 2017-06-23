@@ -32,17 +32,54 @@ namespace Top2000App
         public MainWindow()
         {
             InitializeComponent();
-            //een forloop die je een output geeft van jaren tussen 1999 en 2015 en ze in een combobox zetten
-            for (int i = 1999; i <= 2015; i++)
+
+            #region Get latest year
+            StringBuilder sb = new StringBuilder();
+            sb.Append(@"Server = (localdb)\mssqllocaldb;");
+            sb.Append("Database = TOP2000;");
+            sb.Append("User Id = i5ao1;");
+            sb.Append("Password = test;");
+            string sr = "";
+            string cs = sb.ToString();
+            SqlConnection conn = new SqlConnection(sr);
+            SqlCommand cmd;
+            conn.ConnectionString = cs;
+
+            try
             {
-                //hier wordt et toegevoegd aan de combobox
-                ComboYear.Items.Add(string.Format("{0}", i));
+                conn.Open();
+                string st = string.Format("select max(top2000jaar) from Lijst");
+                cmd = new SqlCommand(st, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable table = new DataTable();
+                table.Load(reader);
+                dataGridTop2000.ItemsSource = table.DefaultView;
+                string item = table.Rows[0].ItemArray[0].ToString();
+                for (int i = 1999; i <= Convert.ToInt32(item); i++)
+                {
+                    ComboYear.Items.Add(string.Format("{0}", i));
+                }
             }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }                       
             ComboYear.SelectedIndex =  ComboYear.Items.Count -1;
             //de methode dataconnection wordt uitgevoerd
             DataConnection(ComboYear.SelectedItem.ToString());
         }
-
+        #endregion
 
         /// <summary>
         /// Handles the Click event of the btnEditArt control.
@@ -55,7 +92,7 @@ namespace Top2000App
             Artist art = new Artist();
             //de window artist wordt geopend
             art.Show();
-        }
+        }        
 
 
 
@@ -81,6 +118,7 @@ namespace Top2000App
         {
             //de methode dataconnection wordt uitgevoerd
             DataConnection(ComboYear.SelectedItem.ToString());
+
         }
 
         /// <summary>
@@ -125,6 +163,9 @@ namespace Top2000App
                 DataTable table = new DataTable();
                 table.Load(reader);
                 dataGridTop2000.ItemsSource = table.DefaultView;
+                string item = (table.Rows.Count - 1).ToString();
+
+
             }
             catch (SqlException sqlEx)
             {
