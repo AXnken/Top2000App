@@ -22,8 +22,13 @@ namespace Top2000App
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// <seealso cref="System.Windows.Window" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -71,29 +76,71 @@ namespace Top2000App
                 }
             }                       
             ComboYear.SelectedIndex =  ComboYear.Items.Count -1;
+            //de methode dataconnection wordt uitgevoerd
             DataConnection(ComboYear.SelectedItem.ToString());
         }
         #endregion
 
+        /// <summary>
+        /// Handles the Click event of the btnEditArt control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void btnEditArt_Click(object sender, RoutedEventArgs e)
         {
+            // nieuwe instantie van artist wordt gemaakt
             Artist art = new Artist();
+            //de window artist wordt geopend
             art.Show();
         }        
 
+
+
+        /// <summary>
+        /// Handles the 1 event of the btnManualImport_Click control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void btnManualImport_Click_1(object sender, RoutedEventArgs e)
         {
+            // nieuwe instantie van ManualImport wordt gemaakt
             ManualImport MaIm = new ManualImport();
+            //de window maualimport wordt geopend
             MaIm.Show();
         }
 
+        /// <summary>
+        /// Handles the SelectionChanged event of the ComboYear control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
         private void ComboYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //de methode dataconnection wordt uitgevoerd
             DataConnection(ComboYear.SelectedItem.ToString());
 
         }
 
-        #region Manual import into database
+        /// <summary>
+        /// Handles the Click event of the btnAutoImport control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void btnAutoImport_Click(object sender, RoutedEventArgs e)
+        {
+            // nieuwe instantie van Fileinvoer wordt gemaakt
+            FileInvoer fl = new FileInvoer();
+            //de window fileinvoer wordt geopend
+            fl.ShowDialog();
+        }
+
+        #region Dataconnectie methode
+
+        //methode maken voor automatische connectie
+        /// <summary>
+        /// Datas the connection.
+        /// </summary>
+        /// <param name="year">The year.</param>
         public void DataConnection(string year)
         {
             StringBuilder sb = new StringBuilder();
@@ -138,10 +185,6 @@ namespace Top2000App
         }
         #endregion
 
-        private void btnAutoImport_Click(object sender, RoutedEventArgs e)
-        {
-            FileInvoer fl = new FileInvoer();
-            fl.ShowDialog();
-        }
+
     }
 }

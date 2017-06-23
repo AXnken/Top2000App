@@ -19,8 +19,15 @@ namespace Top2000App
     /// <summary>
     /// Interaction logic for ArtistDelete.xaml
     /// </summary>
+    /// <seealso cref="System.Windows.Window" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class ArtistDelete : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ArtistDelete"/> class.
+        /// </summary>
+        /// <param name="artiestid">The artiestid.</param>
+        /// <param name="artiestnaam">The artiestnaam.</param>
         public ArtistDelete(string artiestid, string artiestnaam)
         {
             InitializeComponent();
@@ -29,8 +36,13 @@ namespace Top2000App
         }
 
         #region dataconectie methods
+        /// <summary>
+        /// Verwijders the artiest.
+        /// </summary>
+        /// <param name="artiestNaam">The artiest naam.</param>
         public void VerwijderArtiest(string artiestNaam)
         {
+            //stringbuilder wordt gebruikt om de connectionstring op te bouwen
             StringBuilder sb = new StringBuilder();
             sb.Append(@"Server = (localdb)\mssqllocaldb;");
             sb.Append("Database = TOP2000;");
@@ -44,10 +56,13 @@ namespace Top2000App
 
             try
             {
+                //connectie wordt geopend
                 conn.Open();
+                //sql command als string
                 string st = string.Format("exec dbo.VerwijderArtiest @artiestNaam =" +"'"+  artiestNaam + "'");
+                // cmd is een nieuwe sqlcommand die de connectiestring conn en de sql command st pakt
                 cmd = new SqlCommand(st, conn);
-                
+                //hier is een sql data reader die de cmd die we net hadden aangemaakt uitvoert
                 SqlDataReader reader = cmd.ExecuteReader();
             }
             catch (SqlException sqlEx)
@@ -67,6 +82,11 @@ namespace Top2000App
             }
         }
 
+        /// <summary>
+        /// Checkt of the artiest bestaat
+        /// </summary>
+        /// <param name="artiestNaam">The artiest naam.</param>
+        /// <returns>een boolean</returns>
         public bool CheckArtiest(string artiestNaam)
         {
             StringBuilder sb = new StringBuilder();
@@ -108,6 +128,11 @@ namespace Top2000App
         }
         #endregion
 
+        /// <summary>
+        /// Handles the Click event of the button control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void button_Click(object sender, RoutedEventArgs e)
         {
 

@@ -19,8 +19,13 @@ namespace Top2000App
     /// <summary>
     /// Interaction logic for FileInvoer.xaml
     /// </summary>
+    /// <seealso cref="System.Windows.Window" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class FileInvoer : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FileInvoer"/> class.
+        /// </summary>
         public FileInvoer()
         {
             InitializeComponent();
@@ -32,6 +37,11 @@ namespace Top2000App
             comboBoxYearInvoer.SelectedIndex = comboBoxYearInvoer.Items.Count - 1;
         }
 
+        /// <summary>
+        /// Handles the Click event of the button control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void button_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
