@@ -162,7 +162,7 @@ namespace Top2000App
                 DataRowView datarow = (DataRowView)dataGridArt.SelectedItem;
                 ArtistDelete ad = new ArtistDelete(Convert.ToString(datarow.Row.ItemArray[0]),Convert.ToString(datarow.Row.ItemArray[1]));
                 ad.ShowDialog();
-                ZoekArtiest(txtName.Text);
+                ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower());
             }
         }
 
@@ -187,7 +187,7 @@ namespace Top2000App
         private void txtName_SelectionChanged(object sender, RoutedEventArgs e)
         {
             //voert de methode zoekArtiest uit met de inhoud van txtName omgezet naar lowercase
-            ZoekArtiest(txtName.Text.ToLower());
+            ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower());
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Top2000App
                 updateArtist ua = new updateArtist(Convert.ToString(datarow.Row.ItemArray[0]), Convert.ToString(datarow.Row.ItemArray[1]), Convert.ToString(datarow.Row.ItemArray[2]),datarow.Row.ItemArray[3] == DBNull.Value ? null : (byte[])datarow.Row.ItemArray[3],  Convert.ToString(datarow.Row.ItemArray[4]));
                 //de window updateArtist wordt geopend
                 ua.ShowDialog();
-                ZoekArtiest(txtName.Text);
+                ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower());
             }
         }
     }

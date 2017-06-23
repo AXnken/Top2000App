@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="alterArtiest method" Url="html/391d17ca-edd1-c818-cd5b-3d5d230d8d62.htm" />
+  <HelpKINode Title="App class">
+    <HelpKINode Title="App Class" Url="html/1d2dbecc-0652-f5a6-eeab-cdc9ad502004.htm" />
+    <HelpKINode Title="about App class" Url="html/1d2dbecc-0652-f5a6-eeab-cdc9ad502004.htm" />
+    <HelpKINode Title="constructor" Url="html/97d82101-b000-5168-54b3-f19702c2e11b.htm" />
+    <HelpKINode Title="events" Url="html/04c3a4dd-a5a4-3a54-ce04-752908c0d949.htm" />
+    <HelpKINode Title="methods" Url="html/d3513cb2-5cac-4b9d-c294-20747ca43f13.htm" />
+    <HelpKINode Title="properties" Url="html/d3da5826-9ffa-ecd1-741b-768af81149cd.htm" />
+  </HelpKINode>
+  <HelpKINode Title="App.App constructor" Url="html/97d82101-b000-5168-54b3-f19702c2e11b.htm" />
+  <HelpKINode Title="App.InitializeComponent method" Url="html/231baab2-cab3-58b7-cdb0-0d89be3357bf.htm" />
+  <HelpKINode Title="App.Main method" Url="html/bee84d2e-4934-0f68-4ca5-bcc60b29f564.htm" />
+  <HelpKINode Title="Artist class">
+    <HelpKINode Title="Artist Class" Url="html/bcb7498c-4151-f004-74b3-83c628345001.htm" />
+    <HelpKINode Title="about Artist class" Url="html/bcb7498c-4151-f004-74b3-83c628345001.htm" />
+    <HelpKINode Title="constructor" Url="html/88a6c59a-4d5a-c1e8-ff7e-8e22e9c1bc1f.htm" />
+    <HelpKINode Title="events" Url="html/f51ddcb7-239d-4e95-3b7a-95b48fccb740.htm" />
+    <HelpKINode Title="methods" Url="html/1f1a1ea1-f7ec-7f39-31c1-64013ee0ab8d.htm" />
+    <HelpKINode Title="properties" Url="html/8e7a27e8-a8d0-bf04-e562-4fe16e9f6213.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Artist.Artist constructor" Url="html/88a6c59a-4d5a-c1e8-ff7e-8e22e9c1bc1f.htm" />
+  <HelpKINode Title="Artist.HaalAlleArtiesten method" Url="html/773c0722-0f72-e53c-0894-3cc7b6e06226.htm" />
+  <HelpKINode Title="Artist.InitializeComponent method" Url="html/70374a90-27b2-afd1-e466-c4bd00e7b1f9.htm" />
+  <HelpKINode Title="Artist.ZoekArtiest method" Url="html/a8245102-2592-bcd5-fc1b-93c83d8df32b.htm" />
+  <HelpKINode Title="ArtistDelete class">
+    <HelpKINode Title="ArtistDelete Class" Url="html/7a530c47-e98c-53a7-44da-73cdb9c3cce9.htm" />
+    <HelpKINode Title="about ArtistDelete class" Url="html/7a530c47-e98c-53a7-44da-73cdb9c3cce9.htm" />
+    <HelpKINode Title="constructor" Url="html/23de3ab4-d0d0-5cce-4385-46da297b88df.htm" />
+    <HelpKINode Title="events" Url="html/c8a769fd-f221-8242-35be-3dbedee67d34.htm" />
+    <HelpKINode Title="methods" Url="html/c0fb0843-c631-bb15-5c63-f070bee338cd.htm" />
+    <HelpKINode Title="properties" Url="html/9dafe929-f629-84d0-5d35-35144e5437b6.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ArtistDelete.ArtistDelete constructor" Url="html/23de3ab4-d0d0-5cce-4385-46da297b88df.htm" />
+  <HelpKINode Title="ArtistDelete.CheckArtiest method" Url="html/44fe5398-ccee-e504-80fd-2f3c5a232139.htm" />
+  <HelpKINode Title="ArtistDelete.InitializeComponent method" Url="html/e9b8b0d6-8297-ac91-b141-9f0b99a2320e.htm" />
+  <HelpKINode Title="ArtistDelete.VerwijderArtiest method" Url="html/95b3831e-f79d-4062-795c-16944b9b753c.htm" />
+  <HelpKINode Title="ArtistNew class">
+    <HelpKINode Title="ArtistNew Class" Url="html/5fe9f2e0-ac6a-060e-3b5d-ae6a42132a11.htm" />
+    <HelpKINode Title="about ArtistNew class" Url="html/5fe9f2e0-ac6a-060e-3b5d-ae6a42132a11.htm" />
+    <HelpKINode Title="constructor" Url="html/724078c6-4c9d-41a9-cb29-41df10fe9cfe.htm" />
+    <HelpKINode Title="events" Url="html/f4bacdfc-9032-5ac7-3d3d-621f3199151f.htm" />
+    <HelpKINode Title="fields" Url="html/dff5d5cc-9f43-d4a8-1320-1a3522902561.htm" />
+    <HelpKINode Title="methods" Url="html/3e86208b-33e3-a735-8d70-e155d0697d03.htm" />
+    <HelpKINode Title="properties" Url="html/f6285402-e130-34f8-8c2d-3b372966ded4.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ArtistNew.ArtistNew constructor" Url="html/724078c6-4c9d-41a9-cb29-41df10fe9cfe.htm" />
+  <HelpKINode Title="ArtistNew.file field" Url="html/bd26251c-8be3-2a17-f5d4-78aa67ea250c.htm" />
+  <HelpKINode Title="ArtistNew.InitializeComponent method" Url="html/c4c60dbf-8809-3f90-7888-1f0b4088b831.htm" />
+  <HelpKINode Title="ArtistNew.NewArtiestToevoegen method" Url="html/ebdeaf5f-7a46-c9f6-b247-4a8f907096d9.htm" />
+  <HelpKINode Title="CheckArtiest method" Url="html/44fe5398-ccee-e504-80fd-2f3c5a232139.htm" />
+  <HelpKINode Title="CheckInput method" Url="html/f2af4444-0802-82cd-dc8a-6201b9f2656a.htm" />
+  <HelpKINode Title="DataConnection method">
+    <HelpKINode Title="MainWindow.DataConnection Method " Url="html/1768b29e-f5bc-c437-a8e1-fa4d245b944d.htm" />
+    <HelpKINode Title="ManualImport.DataConnection Method " Url="html/ee343d87-04f0-1aed-b41b-710261331939.htm" />
+  </HelpKINode>
+  <HelpKINode Title="file field" Url="html/bd26251c-8be3-2a17-f5d4-78aa67ea250c.htm" />
+  <HelpKINode Title="FileInvoer class">
+    <HelpKINode Title="FileInvoer Class" Url="html/23d12184-6fce-1c1c-8f7f-ceb5561e369f.htm" />
+    <HelpKINode Title="about FileInvoer class" Url="html/23d12184-6fce-1c1c-8f7f-ceb5561e369f.htm" />
+    <HelpKINode Title="constructor" Url="html/15305c25-b77f-739c-4dbb-7b257fc7c348.htm" />
+    <HelpKINode Title="events" Url="html/ad064046-49ed-a321-33cc-eb916aa2b3e2.htm" />
+    <HelpKINode Title="methods" Url="html/e7f77af8-e684-02f9-315b-3a64d502ab1a.htm" />
+    <HelpKINode Title="properties" Url="html/e36dfc3a-6daa-c521-c94d-2dd6673b15b4.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FileInvoer.FileInvoer constructor" Url="html/15305c25-b77f-739c-4dbb-7b257fc7c348.htm" />
+  <HelpKINode Title="FileInvoer.InitializeComponent method" Url="html/0fbe29fe-8c12-8249-7edd-750241a32a0a.htm" />
+  <HelpKINode Title="HaalAlleArtiesten method" Url="html/773c0722-0f72-e53c-0894-3cc7b6e06226.htm" />
+  <HelpKINode Title="HaalAlleJaar method" Url="html/87fa3ace-dfb5-5bca-3030-c12a36821d90.htm" />
+  <HelpKINode Title="InitializeComponent method">
+    <HelpKINode Title="App.InitializeComponent Method " Url="html/231baab2-cab3-58b7-cdb0-0d89be3357bf.htm" />
+    <HelpKINode Title="Artist.InitializeComponent Method " Url="html/70374a90-27b2-afd1-e466-c4bd00e7b1f9.htm" />
+    <HelpKINode Title="ArtistDelete.InitializeComponent Method " Url="html/e9b8b0d6-8297-ac91-b141-9f0b99a2320e.htm" />
+    <HelpKINode Title="ArtistNew.InitializeComponent Method " Url="html/c4c60dbf-8809-3f90-7888-1f0b4088b831.htm" />
+    <HelpKINode Title="FileInvoer.InitializeComponent Method " Url="html/0fbe29fe-8c12-8249-7edd-750241a32a0a.htm" />
+    <HelpKINode Title="MainWindow.InitializeComponent Method " Url="html/8be17394-1fdc-1039-f409-fc8172e829a7.htm" />
+    <HelpKINode Title="ManualImport.InitializeComponent Method " Url="html/0908146c-6120-74a1-030e-379783b2bd0c.htm" />
+    <HelpKINode Title="updateArtist.InitializeComponent Method " Url="html/e16ea675-3ad3-ed84-5b59-290da09731d9.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Main method" Url="html/bee84d2e-4934-0f68-4ca5-bcc60b29f564.htm" />
+  <HelpKINode Title="MainWindow class">
+    <HelpKINode Title="MainWindow Class" Url="html/12f25617-6971-7528-39e6-f24f4f63e71f.htm" />
+    <HelpKINode Title="about MainWindow class" Url="html/12f25617-6971-7528-39e6-f24f4f63e71f.htm" />
+    <HelpKINode Title="constructor" Url="html/1dde7f63-126b-d604-486c-0a0da6a9d9c4.htm" />
+    <HelpKINode Title="events" Url="html/a5bdc615-d10b-60cc-710a-2c7bea0e0575.htm" />
+    <HelpKINode Title="methods" Url="html/edf23973-9d2f-4a3f-5eb6-b7f4e0c45e20.htm" />
+    <HelpKINode Title="properties" Url="html/248e475c-c01f-1431-4175-dddaa9634ebd.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MainWindow.DataConnection method" Url="html/1768b29e-f5bc-c437-a8e1-fa4d245b944d.htm" />
+  <HelpKINode Title="MainWindow.HaalAlleJaar method" Url="html/87fa3ace-dfb5-5bca-3030-c12a36821d90.htm" />
+  <HelpKINode Title="MainWindow.InitializeComponent method" Url="html/8be17394-1fdc-1039-f409-fc8172e829a7.htm" />
+  <HelpKINode Title="MainWindow.MainWindow constructor" Url="html/1dde7f63-126b-d604-486c-0a0da6a9d9c4.htm" />
+  <HelpKINode Title="ManualImport class">
+    <HelpKINode Title="ManualImport Class" Url="html/519f968a-0c45-9bcd-7fdf-8130f6f7f71c.htm" />
+    <HelpKINode Title="about ManualImport class" Url="html/519f968a-0c45-9bcd-7fdf-8130f6f7f71c.htm" />
+    <HelpKINode Title="constructor" Url="html/ab0587cd-85a9-c566-d7d3-da5948582d82.htm" />
+    <HelpKINode Title="events" Url="html/7ed2d5b9-0533-64ee-0f9b-2c63bf4ed3c6.htm" />
+    <HelpKINode Title="methods" Url="html/bcf9aca2-729e-a217-58d3-698dfccd1eb8.htm" />
+    <HelpKINode Title="properties" Url="html/35cb7ae2-422d-7a65-bab1-97cebbc3ecdc.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ManualImport.CheckInput method" Url="html/f2af4444-0802-82cd-dc8a-6201b9f2656a.htm" />
+  <HelpKINode Title="ManualImport.DataConnection method" Url="html/ee343d87-04f0-1aed-b41b-710261331939.htm" />
+  <HelpKINode Title="ManualImport.InitializeComponent method" Url="html/0908146c-6120-74a1-030e-379783b2bd0c.htm" />
+  <HelpKINode Title="ManualImport.ManualImport constructor" Url="html/ab0587cd-85a9-c566-d7d3-da5948582d82.htm" />
+  <HelpKINode Title="NewArtiestToevoegen method" Url="html/ebdeaf5f-7a46-c9f6-b247-4a8f907096d9.htm" />
+  <HelpKINode Title="Top2000App namespace" Url="html/cf75a796-51fc-fc56-d3f8-52e4311d30ee.htm" />
+  <HelpKINode Title="Top2000App.App class" Url="html/1d2dbecc-0652-f5a6-eeab-cdc9ad502004.htm" />
+  <HelpKINode Title="Top2000App.Artist class" Url="html/bcb7498c-4151-f004-74b3-83c628345001.htm" />
+  <HelpKINode Title="Top2000App.ArtistDelete class" Url="html/7a530c47-e98c-53a7-44da-73cdb9c3cce9.htm" />
+  <HelpKINode Title="Top2000App.ArtistNew class" Url="html/5fe9f2e0-ac6a-060e-3b5d-ae6a42132a11.htm" />
+  <HelpKINode Title="Top2000App.FileInvoer class" Url="html/23d12184-6fce-1c1c-8f7f-ceb5561e369f.htm" />
+  <HelpKINode Title="Top2000App.MainWindow class" Url="html/12f25617-6971-7528-39e6-f24f4f63e71f.htm" />
+  <HelpKINode Title="Top2000App.ManualImport class" Url="html/519f968a-0c45-9bcd-7fdf-8130f6f7f71c.htm" />
+  <HelpKINode Title="Top2000App.updateArtist class" Url="html/a5736e72-4036-f72b-0025-ce96b016703e.htm" />
+  <HelpKINode Title="updateArtist class">
+    <HelpKINode Title="updateArtist Class" Url="html/a5736e72-4036-f72b-0025-ce96b016703e.htm" />
+    <HelpKINode Title="about updateArtist class" Url="html/a5736e72-4036-f72b-0025-ce96b016703e.htm" />
+    <HelpKINode Title="constructor" Url="html/a022ad6a-4a2f-c1f6-001e-3516fb3ad0e0.htm" />
+    <HelpKINode Title="events" Url="html/ee5b90ab-9046-d7f4-71fe-fdb9e49364e6.htm" />
+    <HelpKINode Title="methods" Url="html/4e7dc66c-595e-504a-378b-da3a1ac9ba83.htm" />
+    <HelpKINode Title="properties" Url="html/40fd347a-f59e-3e51-3c08-861536d2a967.htm" />
+  </HelpKINode>
+  <HelpKINode Title="updateArtist.alterArtiest method" Url="html/391d17ca-edd1-c818-cd5b-3d5d230d8d62.htm" />
+  <HelpKINode Title="updateArtist.InitializeComponent method" Url="html/e16ea675-3ad3-ed84-5b59-290da09731d9.htm" />
+  <HelpKINode Title="updateArtist.updateArtist constructor" Url="html/a022ad6a-4a2f-c1f6-001e-3516fb3ad0e0.htm" />
+  <HelpKINode Title="version">
+    <HelpKINode Title="1.0.0.0" Url="html/26f20d5d-d889-4c5a-af32-a22fd8f7464d.htm" />
+    <HelpKINode Title="history" Url="html/cb0e366d-608f-4c19-aaeb-15fc5afd931d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VerwijderArtiest method" Url="html/95b3831e-f79d-4062-795c-16944b9b753c.htm" />
+  <HelpKINode Title="Welcome" Url="html/44391ecb-8ba0-44c0-8d8a-dc30d7924775.htm" />
+  <HelpKINode Title="ZoekArtiest method" Url="html/a8245102-2592-bcd5-fc1b-93c83d8df32b.htm" />
+</HelpKI>
