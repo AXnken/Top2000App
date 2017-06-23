@@ -32,6 +32,12 @@ namespace Top2000App
         public MainWindow()
         {
             InitializeComponent();
+            //een forloop die je een output geeft van jaren tussen 1999 en 2015 en ze in een combobox zetten
+            for (int i = 1999; i <= 2015; i++)
+            {
+                //hier wordt et toegevoegd aan de combobox
+                ComboYear.Items.Add(string.Format("{0}", i));
+            }
 
             #region Get latest year
             StringBuilder sb = new StringBuilder();
@@ -79,7 +85,7 @@ namespace Top2000App
             //de methode dataconnection wordt uitgevoerd
             DataConnection(ComboYear.SelectedItem.ToString());
         }
-        #endregion
+
 
         /// <summary>
         /// Handles the Click event of the btnEditArt control.
