@@ -55,6 +55,7 @@ namespace Top2000App
                     if (int.TryParse(txtposYear.Text, out n))
                     {
                         DataConnection();
+                        MessageBox.Show("Een nieuwe regel is ingevoerd", "Invoer Compleet", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else
                     {
@@ -108,7 +109,6 @@ namespace Top2000App
                 // If the artist exists
                 if (item == "1")
                 {
-                    conn.Open();
                     string stone = string.Format("EXEC[dbo].[importManual] @naam = N'{0}', @titel = N'{1}', @jaar = {2}, @tijd = N'{3}', @top2000jaar = {4}, @positie = {5} ", artistName, songTitel, songYear , dateTime, posYear, position);
                     cmd = new SqlCommand(st, conn);
                     SqlDataReader readerone = cmd.ExecuteReader();
@@ -117,7 +117,6 @@ namespace Top2000App
                 }
                 // If the artist does not exist
                 else {
-                    conn.Open();
                     string sttwo = string.Format("EXEC[dbo].[importManual] @naam = N'{0}', @titel = N'{1}', @jaar = {2}, @tijd = N'{3}', @top2000jaar = {4}, @positie = {5}", artistName, songTitel, songYear , dateTime, posYear, position);
                     cmd = new SqlCommand(st, conn);
                     SqlDataReader readertwo = cmd.ExecuteReader();
