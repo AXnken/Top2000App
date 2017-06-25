@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Top2000App"
         mc:Ignorable="d"
-        Title="FileInvoer" Height="122.015" Width="300">
+        Title="FileInvoer" Height="157" Width="289">
     <Grid>
-        <Button x:Name="button" Content="Bestand" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="96" Click="button_Click"/>
-        <Label x:Name="labelFileName" Content="Geen bestand Selecteert" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="140"/>
-        <ComboBox x:Name="comboBoxYearInvoer" HorizontalAlignment="Left" Margin="153,10,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button" Content="Bestand" HorizontalAlignment="Left" Margin="0,68,0,0" VerticalAlignment="Top" Width="96" Click="button_Click"/>
+        <Label x:Name="labelFileName" Content="Geen bestand Selecteert" HorizontalAlignment="Left" Margin="-3,92,0,0" VerticalAlignment="Top" Width="140"/>
+        <ComboBox x:Name="comboBoxYearInvoer" HorizontalAlignment="Left" Margin="140,68,0,0" VerticalAlignment="Top" Width="120"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="276" Source="logo top 2000.png"/>
 
     </Grid>
 </Window>
