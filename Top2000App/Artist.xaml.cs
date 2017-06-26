@@ -162,7 +162,26 @@ namespace Top2000App
                 DataRowView datarow = (DataRowView)dataGridArt.SelectedItem;
                 ArtistDelete ad = new ArtistDelete(Convert.ToString(datarow.Row.ItemArray[0]),Convert.ToString(datarow.Row.ItemArray[1]));
                 ad.ShowDialog();
-                ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower());
+                try
+                {
+                    //voert de methode zoekArtiest uit met de inhoud van txtName omgezet naar lowercase
+                    if (txtName.Text.Contains("'") || txtName.Text.ToLower().Contains("drop") || txtName.Text.ToLower().Contains("select") || txtName.Text.ToLower().Contains("delete") || txtName.Text.ToLower().Contains("insert") || txtName.Text.ToLower().Contains("alter"))
+                    {
+                        return;
+                    }
+                    ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower());
+                }
+                catch (Exception ex)
+                {
+                    if (ex is SqlException)
+                    {
+                        MessageBox.Show("Let op: er is iets miss gegaan bij het database", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
             }
         }
 
@@ -186,8 +205,26 @@ namespace Top2000App
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void txtName_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            //voert de methode zoekArtiest uit met de inhoud van txtName omgezet naar lowercase
-            ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower());
+            try
+            {
+                //voert de methode zoekArtiest uit met de inhoud van txtName omgezet naar lowercase
+                if (txtName.Text.Contains("'") || txtName.Text.ToLower().Contains("drop") || txtName.Text.ToLower().Contains("select") || txtName.Text.ToLower().Contains("delete") || txtName.Text.ToLower().Contains("insert") || txtName.Text.ToLower().Contains("alter"))
+                {
+                    return;
+                }
+                ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower());
+            }
+            catch(Exception ex)
+            {
+                if (ex is SqlException)
+                {
+                    MessageBox.Show("Let op: er is iets miss gegaan bij het database","Waarschuwing",MessageBoxButton.OK,MessageBoxImage.Error);
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         /// <summary>
@@ -216,7 +253,26 @@ namespace Top2000App
                 updateArtist ua = new updateArtist(Convert.ToString(datarow.Row.ItemArray[0]), Convert.ToString(datarow.Row.ItemArray[1]), Convert.ToString(datarow.Row.ItemArray[2]),datarow.Row.ItemArray[3] == DBNull.Value ? null : (byte[])datarow.Row.ItemArray[3],  Convert.ToString(datarow.Row.ItemArray[4]));
                 //de window updateArtist wordt geopend
                 ua.ShowDialog();
-                ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower());
+                try
+                {
+                    //voert de methode zoekArtiest uit met de inhoud van txtName omgezet naar lowercase
+                    if (txtName.Text.Contains("'") || txtName.Text.ToLower().Contains("drop") || txtName.Text.ToLower().Contains("select") || txtName.Text.ToLower().Contains("delete") || txtName.Text.ToLower().Contains("insert") || txtName.Text.ToLower().Contains("alter"))
+                    {
+                        return;
+                    }
+                    ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower());
+                }
+                catch (Exception ex)
+                {
+                    if (ex is SqlException)
+                    {
+                        MessageBox.Show("Let op: er is iets miss gegaan bij het database", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
             }
         }
     }
