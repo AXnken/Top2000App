@@ -36,7 +36,7 @@ namespace Top2000App
             //voert de methode haalallejaren op
             try
             {
-                ComboYear.Items.Add(string.Format("{1}", databaseMethodes.HaalAlleJaar()));
+                ComboYear.Items.Add(string.Format("{0}", databaseMethodes.HaalAlleJaar()));
             }
             catch (SqlException sqlEx)
             {
@@ -47,7 +47,7 @@ namespace Top2000App
                 MessageBox.Show(ex.Message);
             }
 
-            #region Get latest year
+           /* #region Get latest year
             StringBuilder sb = new StringBuilder();
             sb.Append(@"Server = (localdb)\mssqllocaldb;");
             sb.Append("Database = TOP2000;");
@@ -89,7 +89,7 @@ namespace Top2000App
                     conn.Close();
                 }
             }
-            #endregion
+            #endregion*/
 
             //geselecteerde item van combobox in de grote
             ComboYear.SelectedIndex =  ComboYear.Items.Count -1;
