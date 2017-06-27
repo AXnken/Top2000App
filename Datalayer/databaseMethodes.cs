@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Controls;
 
 namespace Datalayer
 {
@@ -36,7 +37,7 @@ namespace Datalayer
             //connectie wordt geopend
             conn.Open();
             //sql command als string
-            string st = string.Format("select l.Positie,s.Titel from Lijst l inner join Song s on s.songid = l.songid where top2000jaar = {0}", year);
+            string st = string.Format("select Lijst.Positie , Song.Titel from Lijst inner join Song on Song.songid = Lijst.songid where top2000jaar = {0}", year);
             // cmd is een nieuwe sqlcommand die de connectiestring conn en de sql command st pakt
             cmd = new SqlCommand(st, conn);
             //hier is een sql data reader die de cmd die we net hadden aangemaakt uitvoert
@@ -54,7 +55,7 @@ namespace Datalayer
 
         }
 
-        public static SqlDataReader HaalAlleJaar()
+        public static ?????  HaalAlleJaar(ComboBox M)
         {
             //stringbuilder wordt gebruikt om de connectionstring op te bouwen
             StringBuilder sb = new StringBuilder();
@@ -71,20 +72,24 @@ namespace Datalayer
             //connectie wordt geopend
             conn.Open();
             //sql command als string
-            string st = string.Format("select distinct top2000jaar from Lijst");
+            string st = string.Format("select distinct top2000jaar from Lijst order by top2000jaar");
             // cmd is een nieuwe sqlcommand die de connectiestring conn en de sql command st pakt
             cmd = new SqlCommand(st, conn);
             //hier is een sql data reader die de cmd die we net hadden aangemaakt uitvoert
             SqlDataReader reader = cmd.ExecuteReader();
             DataTable table = new DataTable();
             table.Load(reader);
-
+            int length = table.Rows.Count;
+            ComboBox ComboYear = M;
+            for (int i = 0; i <= length -1; i++)
+            {
+                ComboYear.Items.Add(string.Format("{0}", table.Rows[i].ItemArray[0]));
+            }
             if (conn.State != System.Data.ConnectionState.Closed)
             {
                 conn.Close();
             }
-
-            return reader;
+            return ????;
         }
 
         public static void alterArtiest(string artiestid, string artiestnaam, string biographie, string url)
