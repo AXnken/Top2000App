@@ -31,7 +31,7 @@ namespace Top2000App
         /// </summary>
         public byte[] file;
         /// <summary>
-        /// Initializes a new instance of the <see cref="ArtistNew"/> class.
+        /// Initializes a new instance of the <see cref="ArtistNew" /> class.
         /// </summary>
         public ArtistNew()
         {
@@ -43,7 +43,7 @@ namespace Top2000App
         /// Button click om een foto te selecteren om hem bij de artiest te voegen
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -66,7 +66,7 @@ namespace Top2000App
         /// Handles the Click event of the button2 control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void button2_Click(object sender, RoutedEventArgs e)
         {
             //de window wordt gesloten
@@ -77,7 +77,7 @@ namespace Top2000App
         /// Handles the Click event of the button1 control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             try
