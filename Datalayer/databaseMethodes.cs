@@ -76,6 +76,8 @@ namespace Datalayer
             cmd = new SqlCommand(st, conn);
             //hier is een sql data reader die de cmd die we net hadden aangemaakt uitvoert
             SqlDataReader reader = cmd.ExecuteReader();
+            DataTable table = new DataTable();
+            table.Load(reader);
 
             if (conn.State != System.Data.ConnectionState.Closed)
             {

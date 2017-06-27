@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Debug\Datalayer.dll" />
+    <Content Include="bin\Debug\Datalayer.pdb" />
     <Content Include="obj\Debug\Datalayer.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\Datalayer.dll" />
     <Content Include="obj\Debug\Datalayer.pdb" />
