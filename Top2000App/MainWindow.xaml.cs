@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Datalayer;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -33,7 +34,18 @@ namespace Top2000App
         {
             InitializeComponent();
             //voert de methode haalallejaren op
-            HaalAlleJaar();
+            try
+            {
+                ComboYear.Items.Add(string.Format("{1}", databaseMethodes.HaalAlleJaar()));
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             #region Get latest year
             StringBuilder sb = new StringBuilder();
@@ -78,10 +90,24 @@ namespace Top2000App
                 }
             }
             #endregion
+
             //geselecteerde item van combobox in de grote
             ComboYear.SelectedIndex =  ComboYear.Items.Count -1;
-            //de methode dataconnection wordt uitgevoerd
-            DataConnection(ComboYear.SelectedItem.ToString());
+            //de methode fullDataGrid wordt uitgevoerd uit de class databseMethodes   
+            try
+            {
+                dataGridTop2000.ItemsSource = databaseMethodes.fullDataGrid(ComboYear.SelectedItem.ToString()).DefaultView;
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+
         }
 
 
@@ -120,8 +146,19 @@ namespace Top2000App
         /// <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
         private void ComboYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //de methode dataconnection wordt uitgevoerd
-            DataConnection(ComboYear.SelectedItem.ToString());
+            //de methode fullDataGrid wordt uitgevoerd uit de class databseMethodes 
+            try
+            {
+                dataGridTop2000.ItemsSource = databaseMethodes.fullDataGrid(ComboYear.SelectedItem.ToString()).DefaultView;
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
@@ -137,110 +174,5 @@ namespace Top2000App
             //de window fileinvoer wordt geopend
             fl.ShowDialog();
         }
-
-        #region Dataconnectie methode
-
-        //methode maken voor automatische connectie
-        /// <summary>
-        /// Datas the connection.
-        /// </summary>
-        /// <param name="year">The year.</param>
-        public void DataConnection(string year)
-        {
-            //stringbuilder wordt gebruikt om de connectionstring op te bouwen
-            StringBuilder sb = new StringBuilder();
-            sb.Append(@"Server = (localdb)\mssqllocaldb;");
-            sb.Append("Database = TOP2000;");
-            sb.Append("User Id = i5ao1;");
-            sb.Append("Password = test;");
-            string sr = "";
-            string cs = sb.ToString();
-            SqlConnection conn = new SqlConnection(sr);
-            SqlCommand cmd;
-            conn.ConnectionString = cs;
-
-            try
-            {
-                //connectie wordt geopend
-                conn.Open();
-                //sql command als string
-                string st = string.Format("select l.Positie,s.Titel from Lijst l inner join Song s on s.songid = l.songid where top2000jaar = {0}", year);
-                // cmd is een nieuwe sqlcommand die de connectiestring conn en de sql command st pakt
-                cmd = new SqlCommand(st, conn);
-                //hier is een sql data reader die de cmd die we net hadden aangemaakt uitvoert
-                SqlDataReader reader = cmd.ExecuteReader();
-                DataTable table = new DataTable();
-                //de datatable wordt gelinked aan de reader 
-                table.Load(reader);
-                //de inhoud van de van de datagrid wordt gelinked met de datatable
-                dataGridTop2000.ItemsSource = table.DefaultView;
-                string item = (table.Rows.Count - 1).ToString();
-
-
-            }
-            catch (SqlException sqlEx)
-            {
-                MessageBox.Show(sqlEx.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (conn.State != System.Data.ConnectionState.Closed)
-                {
-                    conn.Close();
-                }
-            }
-        }
-
-        public void HaalAlleJaar()
-        {
-            //stringbuilder wordt gebruikt om de connectionstring op te bouwen
-            StringBuilder sb = new StringBuilder();
-            sb.Append(@"Server = (localdb)\mssqllocaldb;");
-            sb.Append("Database = TOP2000;");
-            sb.Append("User Id = i5ao1;");
-            sb.Append("Password = test;");
-            string sr = "";
-            string cs = sb.ToString();
-            SqlConnection conn = new SqlConnection(sr);
-            SqlCommand cmd;
-            conn.ConnectionString = cs;
-
-            try
-            {
-                //connectie wordt geopend
-                conn.Open();
-                //sql command als string
-                string st = string.Format("select distinct top2000jaar from Lijst");
-                // cmd is een nieuwe sqlcommand die de connectiestring conn en de sql command st pakt
-                cmd = new SqlCommand(st, conn);
-                //hier is een sql data reader die de cmd die we net hadden aangemaakt uitvoert
-                SqlDataReader reader = cmd.ExecuteReader();
-                //voegt de inhoud van de reader aan de combobox toe
-                ComboYear.Items.Add(string.Format("{1}", reader));
-
-            }
-            catch (SqlException sqlEx)
-            {
-                MessageBox.Show(sqlEx.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (conn.State != System.Data.ConnectionState.Closed)
-                {
-                    conn.Close();
-                }
-            }
-        }
-        #endregion
-
-
     }
 }

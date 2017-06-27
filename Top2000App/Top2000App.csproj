@@ -140,6 +140,12 @@
   <ItemGroup>
     <Resource Include="logo top 2000.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Datalayer\Datalayer.csproj">
+      <Project>{0284E2FC-0A3E-4A49-9C80-553ED8FBFAC4}</Project>
+      <Name>Datalayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

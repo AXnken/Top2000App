@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Datalayer;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -32,82 +33,19 @@ namespace Top2000App
         /// <param name="biographie">The biographie.</param>
         /// <param name="foto">The foto.</param>
         /// <param name="url">The URL.</param>
-        public updateArtist(string artiestid, string artiestnaam,string biographie,byte[] foto,string url)
+        public updateArtist(string artiestid, string artiestnaam,string biographie,byte[] _foto,string url)
         {
             InitializeComponent();
             //als de foto null is zorgt hij dat hij deze code skipt
-            if (foto != null)
-            { 
-            BitmapImage biImg = new BitmapImage();
-            MemoryStream ms = new MemoryStream(foto);
-            biImg.BeginInit();
-            biImg.StreamSource = ms;
-            biImg.EndInit();
-            ImageSource imgSrc = biImg as ImageSource;
-
-            image.Source = imgSrc;
+            if (_foto != null)
+            {
+            image.Source = databaseMethodes.byteToFoto(_foto);
             }
             textBoxid.Text = artiestid;
             textBoxUpdateNaam.Text = artiestnaam;
             textBoxUpdateBio.Text = biographie;
             textBoxUpdateURL.Text = url;
         }
-
-        #region dataconnectie methods
-        /// <summary>
-        /// Alters the artiest.
-        /// </summary>
-        /// <param name="artiestid">The artiestid.</param>
-        /// <param name="artiestnaam">The artiestnaam.</param>
-        /// <param name="biographie">The biographie.</param>
-        /// <param name="url">The URL.</param>
-        public void alterArtiest(string artiestid, string artiestnaam, string biographie, string url)
-        {
-            //stringbuilder wordt gebruikt om de connectionstring op te bouwen
-            StringBuilder sb = new StringBuilder();
-            sb.Append(@"Server = (localdb)\mssqllocaldb;");
-            sb.Append("Database = TOP2000;");
-            sb.Append("User Id = i5ao1;");
-            sb.Append("Password = test;");
-            string sr = "";
-            string cs = sb.ToString();
-            SqlConnection conn = new SqlConnection(sr);
-            SqlCommand cmd;
-            conn.ConnectionString = cs;
-
-            try
-            {
-                //connectie wordt geopend
-                conn.Open();
-                //sql command als string
-                string st = string.Format("exec AlterArtist @id= @idArtiest ,@naam= @naamArtiest ,@biografie=@biographieArtiest ,@foto = null ,@url= @URLArtiest");               
-                // cmd is een nieuwe sqlcommand die de connectiestring conn en de sql command st pakt
-                cmd = new SqlCommand(st, conn);
-                cmd.Parameters.AddWithValue("idArtiest",artiestid);
-                cmd.Parameters.AddWithValue("naamArtiest", artiestnaam);
-                cmd.Parameters.AddWithValue("biographieArtiest",biographie);
-                cmd.Parameters.AddWithValue("URLArtiest",url);
-                //hier is een sql data reader die de cmd die we net hadden aangemaakt uitvoert
-                SqlDataReader reader = cmd.ExecuteReader();
-
-            }
-            catch (SqlException sqlEx)
-            {
-                MessageBox.Show(sqlEx.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (conn.State != System.Data.ConnectionState.Closed)
-                {
-                    conn.Close();
-                }
-            }
-        }
-        #endregion
         /// <summary>
         /// Handles the Click event of the buttonCancel control.
         /// </summary>
@@ -125,8 +63,22 @@ namespace Top2000App
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void buttonOpslaan_Click(object sender, RoutedEventArgs e)
         {
-            alterArtiest(textBoxid.Text,textBoxUpdateNaam.Text,textBoxUpdateBio.Text,textBoxUpdateURL.Text);
-            this.Close();
+            try
+            {
+                databaseMethodes.alterArtiest(textBoxid.Text, textBoxUpdateNaam.Text, textBoxUpdateBio.Text, textBoxUpdateURL.Text);
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.Close();
+            }
         }
     }
 }

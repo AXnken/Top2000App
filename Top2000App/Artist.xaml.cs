@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Datalayer;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -29,44 +30,12 @@ namespace Top2000App
         public Artist()
         {
             InitializeComponent();
-            HaalAlleArtiesten();
-        }
-
-        #region Dataconnectie methodes
-
-        /// <summary>
-        /// Haalt alle artiesten op uit het database en stopt ze in de datagrid
-        /// </summary>
-        public void HaalAlleArtiesten()
-        {
-            //stringbuilder wordt gebruikt om de connectionstring op te bouwen
-            StringBuilder sb = new StringBuilder();
-            sb.Append(@"Server = (localdb)\mssqllocaldb;");
-            sb.Append("Database = TOP2000;");
-            sb.Append("User Id = i5ao1;");
-            sb.Append("Password = test;");
-            string sr = "";
-            string cs = sb.ToString();
-            SqlConnection conn = new SqlConnection(sr);
-            SqlCommand cmd;
-            conn.ConnectionString = cs;
-
             try
             {
-                //connectie wordt geopend
-                conn.Open();
-                //sql command als string    
-                string st = string.Format("select * from Artiest {0}","");
-                // cmd is een nieuwe sqlcommand die de connectiestring conn en de sql command st pakt
-                cmd = new SqlCommand(st, conn);
-                //hier is een sql data reader die de cmd die we net hadden aangemaakt uitvoert
-                SqlDataReader reader = cmd.ExecuteReader();
-                //hier wordt een datatable gemaakt die we nodig hebben om het resultaat van de sql command in een datagrid te stoppen
-                DataTable table = new DataTable();
-                //hier laad je de reader van net in het zojuist aangemaakte datatable
-                table.Load(reader);
-                //hier link je de itemsource van de datagrid met de table defaultview
-                dataGridArt.ItemsSource = table.DefaultView;
+                /// <summary>
+                /// Haalt alle artiesten op uit het database en stopt ze in de datagrid
+                /// </summary>
+                dataGridArt.ItemsSource = databaseMethodes.HaalAlleArtiesten().DefaultView;
             }
             catch (SqlException sqlEx)
             {
@@ -76,67 +45,8 @@ namespace Top2000App
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                if (conn.State != System.Data.ConnectionState.Closed)
-                {
-                    conn.Close();
-                }
-            }
-        }
 
-        /// <summary>
-        /// Zoeks the artiest.
-        /// </summary>
-        /// <param name="artiest">The artiest.</param>
-        public void ZoekArtiest(string artiest)
-        {
-            //stringbuilder wordt gebruikt om de connectionstring op te bouwen
-            StringBuilder sb = new StringBuilder();
-            sb.Append(@"Server = (localdb)\mssqllocaldb;");
-            sb.Append("Database = TOP2000;");
-            sb.Append("User Id = i5ao1;");
-            sb.Append("Password = test;");
-            string sr = "";
-            string cs = sb.ToString();
-            SqlConnection conn = new SqlConnection(sr);
-            SqlCommand cmd;
-            conn.ConnectionString = cs;
-
-            try
-            {
-                //connectie wordt geopend
-                conn.Open();
-                //sql command als string
-                string st = string.Format("select * from Artiest where naam like {0}", "'%" + artiest +"%'");
-                // cmd is een nieuwe sqlcommand die de connectiestring conn en de sql command st pakt
-                cmd = new SqlCommand(st, conn);
-                //hier is een sql data reader die de cmd die we net hadden aangemaakt uitvoert
-                SqlDataReader reader = cmd.ExecuteReader();
-                //hier wordt een datatable gemaakt die we nodig hebben om het resultaat van de sql command in een datagrid te stoppen
-                DataTable table = new DataTable();
-                //hier laad je de reader van net in het zojuist aangemaakte datatable
-                table.Load(reader);
-                //hier link je de itemsource van de datagrid met de table defaultview
-                dataGridArt.ItemsSource = table.DefaultView;
-            }
-            catch (SqlException sqlEx)
-            {
-                MessageBox.Show(sqlEx.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (conn.State != System.Data.ConnectionState.Closed)
-                {
-                    conn.Close();
-                }
-            }
         }
-        #endregion
 
         /// <summary>
         /// Handles the Click event of the btnDelArt control.
@@ -169,7 +79,19 @@ namespace Top2000App
                     {
                         return;
                     }
-                    ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower());
+
+                    try
+                    {
+                    dataGridArt.ItemsSource = databaseMethodes.ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower()).DefaultView;
+                    }
+                    catch (SqlException sqlEx)
+                    {
+                        MessageBox.Show(sqlEx.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -212,7 +134,18 @@ namespace Top2000App
                 {
                     return;
                 }
-                ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower());
+                try
+                { 
+                dataGridArt.ItemsSource =  databaseMethodes.ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower()).DefaultView;
+                }
+                catch (SqlException sqlEx)
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             catch(Exception ex)
             {
@@ -260,14 +193,27 @@ namespace Top2000App
                     {
                         return;
                     }
-                    ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower());
+                    try
+                    { 
+                    dataGridArt.ItemsSource = databaseMethodes.ZoekArtiest(txtName.Text.TrimEnd().TrimStart().ToLower()).DefaultView;
+                    }
+                    catch (SqlException sqlEx)
+                    {
+                        MessageBox.Show(sqlEx.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
                 catch (Exception ex)
                 {
+                    //als het een een fout is aan database kant geeft hij een custom waarschuwing terug
                     if (ex is SqlException)
                     {
                         MessageBox.Show("Let op: er is iets miss gegaan bij het database", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
+                    //als er een fout komt dan geeft hij een foutmelding terug met het type fout
                     else
                     {
                         MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButton.OK, MessageBoxImage.Error);

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Top2000App", "Top2000App\To
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation1", "Documentation1\Documentation1.shfbproj", "{455CA5F8-2851-4D0E-AB31-AD0B1EB21280}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datalayer", "Datalayer\Datalayer.csproj", "{0284E2FC-0A3E-4A49-9C80-553ED8FBFAC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{455CA5F8-2851-4D0E-AB31-AD0B1EB21280}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{455CA5F8-2851-4D0E-AB31-AD0B1EB21280}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{455CA5F8-2851-4D0E-AB31-AD0B1EB21280}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0284E2FC-0A3E-4A49-9C80-553ED8FBFAC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0284E2FC-0A3E-4A49-9C80-553ED8FBFAC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0284E2FC-0A3E-4A49-9C80-553ED8FBFAC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0284E2FC-0A3E-4A49-9C80-553ED8FBFAC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
