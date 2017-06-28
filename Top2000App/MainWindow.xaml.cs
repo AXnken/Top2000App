@@ -34,9 +34,9 @@ namespace Top2000App
         {
             InitializeComponent();
             //voert de methode haalallejaren op
-           /* try
+            try
             {
-                ComboYear.Items.Add(string.Format("{0}", databaseMethodes.HaalAlleJaar(ComboYear)));
+                databaseMethodes.HaalAlleJaar(ComboYear);
             }
             catch (SqlException sqlEx)
             {
@@ -45,7 +45,7 @@ namespace Top2000App
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }*/
+            }
 
             //geselecteerde item van combobox in de grote
             ComboYear.SelectedIndex = ComboYear.Items.Count - 1;

@@ -25,6 +25,7 @@ namespace Top2000App
     /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class updateArtist : Window
     {
+       
         /// <summary>
         /// Initializes a new instance of the <see cref="updateArtist"/> class.
         /// </summary>
@@ -65,7 +66,7 @@ namespace Top2000App
         {
             try
             {
-                databaseMethodes.alterArtiest(textBoxid.Text, textBoxUpdateNaam.Text, textBoxUpdateBio.Text, textBoxUpdateURL.Text);
+                databaseMethodes.alterArtiest(textBoxid.Text, textBoxUpdateNaam.Text, textBoxUpdateBio.Text, textBoxUpdateURL.Text,databaseMethodes.fotoToByte());
             }
             catch (SqlException sqlEx)
             {
@@ -79,6 +80,29 @@ namespace Top2000App
             {
                 this.Close();
             }
+        }
+
+        private void button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            buttonWijzigFoto.Opacity = 0.5;
+        }
+
+        private void buttonWijzigFoto_MouseLeave(object sender, MouseEventArgs e)
+        {
+            buttonWijzigFoto.Opacity = 0.0;
+        }
+
+        private void buttonWijzigFoto_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                image.Source = databaseMethodes.byteToFoto(databaseMethodes.fotoToByte());            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
     }
 }

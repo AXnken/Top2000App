@@ -13,13 +13,28 @@ using System.Windows.Controls;
 
 namespace Datalayer
 {
+    /// <summary>
+    ///  een static class met alle methodes die nodig zijn voor de interactie met het database.
+    /// </summary>
     public static class databaseMethodes
     {
         #region fields
+        /// <summary>
+        /// The filename
+        /// </summary>
         private static string filename = "";
+        /// <summary>
+        /// The ofd
+        /// </summary>
+        private static OpenFileDialog ofd = new OpenFileDialog();
         #endregion
 
         #region methods
+        /// <summary>
+        /// Fulls the data grid.
+        /// </summary>
+        /// <param name="year">The year.</param>
+        /// <returns></returns>
         public static DataTable fullDataGrid(string year)
         {
             //stringbuilder wordt gebruikt om de connectionstring op te bouwen
@@ -55,7 +70,11 @@ namespace Datalayer
 
         }
 
-        public static ?????  HaalAlleJaar(ComboBox M)
+        /// <summary>
+        /// Haals the alle jaar.
+        /// </summary>
+        /// <param name="M">The m.</param>
+        public static void  HaalAlleJaar(ComboBox M)
         {
             //stringbuilder wordt gebruikt om de connectionstring op te bouwen
             StringBuilder sb = new StringBuilder();
@@ -89,10 +108,17 @@ namespace Datalayer
             {
                 conn.Close();
             }
-            return ????;
         }
 
-        public static void alterArtiest(string artiestid, string artiestnaam, string biographie, string url)
+        /// <summary>
+        /// Alters the artiest.
+        /// </summary>
+        /// <param name="artiestid">The artiestid.</param>
+        /// <param name="artiestnaam">The artiestnaam.</param>
+        /// <param name="biographie">The biographie.</param>
+        /// <param name="url">The URL.</param>
+        /// <param name="fotoArtist">The foto artist.</param>
+        public static void alterArtiest(string artiestid, string artiestnaam, string biographie, string url,byte[] fotoArtist)
         {
             //stringbuilder wordt gebruikt om de connectionstring op te bouwen
             StringBuilder sb = new StringBuilder();
@@ -109,13 +135,14 @@ namespace Datalayer
             //connectie wordt geopend
             conn.Open();
             //sql command als string
-            string st = string.Format("exec AlterArtist @id= @idArtiest ,@naam= @naamArtiest ,@biografie=@biographieArtiest ,@foto = null ,@url= @URLArtiest");
+            string st = string.Format("exec AlterArtist @id= @idArtiest ,@naam= @naamArtiest ,@biografie=@biographieArtiest ,@foto = @NewFoto ,@url= @URLArtiest");
             // cmd is een nieuwe sqlcommand die de connectiestring conn en de sql command st pakt
             cmd = new SqlCommand(st, conn);
             cmd.Parameters.AddWithValue("idArtiest", artiestid);
             cmd.Parameters.AddWithValue("naamArtiest", artiestnaam);
             cmd.Parameters.AddWithValue("biographieArtiest", biographie);
             cmd.Parameters.AddWithValue("URLArtiest", url);
+            cmd.Parameters.AddWithValue("NewFoto",fotoArtist);
             //hier is een sql data reader die de cmd die we net hadden aangemaakt uitvoert
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -126,6 +153,11 @@ namespace Datalayer
 
         }
 
+        /// <summary>
+        /// Bytes to foto.
+        /// </summary>
+        /// <param name="foto">The foto.</param>
+        /// <returns></returns>
         public static ImageSource byteToFoto(byte[] foto)
         {
 
@@ -138,6 +170,10 @@ namespace Datalayer
             return imgSrc;
         }
 
+        /// <summary>
+        /// Haals the alle artiesten.
+        /// </summary>
+        /// <returns></returns>
         public static DataTable HaalAlleArtiesten()
         {
             //stringbuilder wordt gebruikt om de connectionstring op te bouwen
@@ -171,6 +207,11 @@ namespace Datalayer
             return table;
         }
 
+        /// <summary>
+        /// Zoeks the artiest.
+        /// </summary>
+        /// <param name="artiest">The artiest.</param>
+        /// <returns></returns>
         public static DataTable ZoekArtiest(string artiest)
         {
             //stringbuilder wordt gebruikt om de connectionstring op te bouwen
@@ -205,6 +246,10 @@ namespace Datalayer
                 return table;         
         }
 
+        /// <summary>
+        /// Verwijders the artiest.
+        /// </summary>
+        /// <param name="artiestNaam">The artiest naam.</param>
         public static void VerwijderArtiest(string artiestNaam)
         {
             //stringbuilder wordt gebruikt om de connectionstring op te bouwen
@@ -234,6 +279,11 @@ namespace Datalayer
             
         }
 
+        /// <summary>
+        /// Checks the artiest.
+        /// </summary>
+        /// <param name="artiestNaam">The artiest naam.</param>
+        /// <returns></returns>
         public static bool CheckArtiest(string artiestNaam)
         {
             StringBuilder sb = new StringBuilder();
@@ -260,6 +310,13 @@ namespace Datalayer
                 return result;
         }
 
+        /// <summary>
+        /// News the artiest toevoegen.
+        /// </summary>
+        /// <param name="naam">The naam.</param>
+        /// <param name="bio">The bio.</param>
+        /// <param name="binfoto">The binfoto.</param>
+        /// <param name="url">The URL.</param>
         public static void NewArtiestToevoegen(string naam, string bio, object binfoto, string url)
         {
             //stringbuilder wordt gebruikt om de connectionstring op te bouwen
@@ -291,11 +348,13 @@ namespace Datalayer
 
         }
 
+        /// <summary>
+        /// Fotoes to byte.
+        /// </summary>
+        /// <returns></returns>
         public static byte[] fotoToByte()
         {
             byte[] file;
-            //maakt een nieuwe instantie van een OpenFileDialog
-            OpenFileDialog ofd = new OpenFileDialog();
             //opent een OpenFileDialog window
             ofd.ShowDialog();
             //string filename is de naam van het geselecteerde bestand
@@ -315,6 +374,12 @@ namespace Datalayer
 
         #region properties
 
+        /// <summary>
+        /// Gets or sets the filename.
+        /// </summary>
+        /// <value>
+        /// The filename.
+        /// </value>
         public static string Filename
         {
             get

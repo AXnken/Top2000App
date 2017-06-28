@@ -19,6 +19,7 @@
         <Label x:Name="label3" Content="Foto:" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="117"/>
         <Label x:Name="label4" Content="id:" HorizontalAlignment="Left" Margin="164,5,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBoxid" HorizontalAlignment="Left" Height="23" Margin="164,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <Button x:Name="buttonWijzigFoto" Content="Wijzig" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="136" Height="121" Opacity="0.0" MouseEnter="button_MouseEnter" MouseLeave="buttonWijzigFoto_MouseLeave" Click="buttonWijzigFoto_Click"/>
 
     </Grid>
 </Window>
