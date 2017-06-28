@@ -54,7 +54,7 @@ namespace Datalayer
 
         }
 
-        public static SqlDataReader HaalAlleJaar()
+        public static DataTable HaalAlleJaar()
         {
             //stringbuilder wordt gebruikt om de connectionstring op te bouwen
             StringBuilder sb = new StringBuilder();
@@ -84,7 +84,7 @@ namespace Datalayer
                 conn.Close();
             }
 
-            return reader;
+            return table;
         }
 
         public static void alterArtiest(string artiestid, string artiestnaam, string biographie, string url)
