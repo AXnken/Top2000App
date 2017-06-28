@@ -142,7 +142,7 @@ namespace Datalayer
             cmd.Parameters.AddWithValue("naamArtiest", artiestnaam);
             cmd.Parameters.AddWithValue("biographieArtiest", biographie);
             cmd.Parameters.AddWithValue("URLArtiest", url);
-            cmd.Parameters.AddWithValue("NewFoto",fotoArtist);
+            cmd.Parameters.AddWithValue("NewFoto",fotoArtist == null ? System.Data.SqlTypes.SqlBinary.Null : fotoArtist);
             //hier is een sql data reader die de cmd die we net hadden aangemaakt uitvoert
             SqlDataReader reader = cmd.ExecuteReader();
 
